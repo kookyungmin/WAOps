@@ -1,0 +1,227 @@
+html {
+	height : 100%;
+}
+body {
+	margin : auto;
+	width : 80%;
+	min-width : 1000px;
+	height : 100%;
+	font-family: 'Jua', sans-serif;
+}
+
+a {
+	text-decoration : none !important;
+}
+
+li {
+	list-style : none;
+}
+
+/* ------------------ header ----------------------*/
+
+.header-main h1 {
+	width : 600px;
+	font-family : 'Gloria Hallelujah', cursive;
+	font-size : 50px !important;
+	height : 150px;
+	margin-top : 60px;
+	margin-left : 30px;
+}
+
+.header-main h1 a {
+	color : #000;
+}
+
+.header-main h1 a>span {
+	font-size : 80px;
+	font-weight : bold;
+	color : #ff9900;
+}
+
+.header-img{
+	width : 200px;
+	height : 200px;
+	border : 1px solid #ddd;
+}
+.header-img>a{
+	width : 100%;
+	height : 100%;
+}
+.header-img>a>img{
+	width : 100%;
+	height : 100%;
+}
+
+.center {
+	text-align : center;
+}
+
+/* -------------------header 끝 -------------------*/
+
+/* -------------------nav -------------------------*/
+.nav {
+	height : 100%;
+}
+
+.nav>li>a {
+	padding-top : 20px;
+	display : block;
+	color : #000;
+}
+
+.nav>li>a:hover {
+	background: #ff9900;
+	color : #fff;
+}
+
+.nav-active {
+	background: #ff9900 !important;
+	color : #fff !important;
+}
+
+.level1>ul {
+	padding : 0;
+	margin : 0;
+}
+
+
+.level2>li>a {
+	padding : 20px 15px 10px 15px;
+	display : block;
+	background: #ffc180;
+	color : #fff;
+}
+
+.level2>li>a:hover {
+	color : #337ab7;
+}
+
+.level2 {
+	display : none;
+}
+
+
+
+/* ---------------nav 끝 -------------------------- */
+
+/* ---------------display ------------------------- */
+
+.display-n {
+	display : none;
+}
+
+.display-b {
+	display : block;
+}
+
+.display-i {
+	display : inline;
+}
+
+/* ---------------width, height ----------------------*/
+
+.w-80 {
+	width : 80%;
+}
+
+.w-15 {
+	width : 15%;
+}
+
+.w-5 {
+	width : 5%;
+}
+
+
+
+/* ---------------float, both, overflow --------------------*/
+
+.o-h{
+	overflow : hidden;
+}
+
+.f-r {
+	float : right;
+}
+
+.f-l {
+	float : left;
+}
+
+.c-b {
+	clear : both;
+}
+
+/* ------------------ margin, padding, border --------------- */
+
+.bd-orange {
+	border : 5px solid #ff9900;
+	border-radius : 15px;
+}
+
+.mg-left10 {
+	margin-left : 10px !important;
+}
+
+.mg-right10 {
+	margin-right : 10px !important;
+}
+
+.mg-top10 {
+	margin-top : 10px !important;
+}
+
+.mg-bottom10 {
+	margin-bottom : 10px !important;
+}
+
+.mg-left30 {
+	margin-left : 30px !important;
+}
+
+.mg-right30 {
+	margin-right : 30px !important;
+}
+
+.mg-top30 {
+	margin-top : 30px !important;
+}
+
+.mg-bottom30 {
+	margin-bottom : 30px !important;
+}
+
+.pd-left10 {
+	padding-left : 10px !important;
+}
+
+.pd-right10 {
+	padding-right : 10px !important;
+}
+
+.pd-top10 {
+	padding-top : 10px !important;
+}
+
+.pd-bottom10 {
+	padding-bottom : 10px !important;
+}
+
+.pd-left30 {
+	padding-left : 30px !important;
+}
+
+.pd-right30 {
+	padding-right : 30px !important;
+}
+
+.pd-top30 {
+	padding-top : 30px !important;
+}
+
+.pd-bottom30 {
+	padding-bottom : 30px !important;
+}
+
+
+
