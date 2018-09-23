@@ -1,4 +1,4 @@
-package com.kookyungmin.waops;
+package com.kookyungmin.waops.persistence;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;

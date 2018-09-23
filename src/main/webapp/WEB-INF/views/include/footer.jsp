@@ -8,10 +8,14 @@
 	</footer>
 
 
-	<!--jQuery.3.3.1 -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
 	<!-- Bootstrap JavaScript -->
-	<script src="resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="resources/js/WAops.js" type="text/javascript"></script>
+	<script src="/resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/resources/js/handlebars-v4.0.12.js" type="text/javascript"></script>
+	<script src="/resources/js/moment-min.js"></script>
+	<script src="/resources/js/hbs.js" type="text/javascript"></script>
+	<script src="/resources/js/WAops.js" type="text/javascript"></script>
+	<script src="/resources/js/question.js" type="text/javascript"></script>
+	
 </body>
 </html>

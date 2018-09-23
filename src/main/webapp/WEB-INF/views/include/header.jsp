@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="/resources/css/WAOps.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<!--jQuery.3.3.1 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -26,7 +28,7 @@
 			<h1 class="f-l"><a href="#"><span>W</span>e <span>A</span>re devel<span>Op</span>er<span>s</span></a></h1>
 			<div class="header-img f-r mg-right30 mg-top10">
 				<a href="#">
-					<img src="resources/img/user.jpg" alt="">
+					<img src="/resources/img/user.jpg" alt="">
 				</a>
 			</div>
 		</div>

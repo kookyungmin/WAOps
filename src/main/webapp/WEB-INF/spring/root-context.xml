@@ -29,7 +29,12 @@
 	    destroy-method="clearCache">
 	    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	<!-- com.kookyungmin.WAOps.persistence 패키지를 자동으로 인식해서 DAO 구현체 찾음 -->
-	<context:component-scan base-package="com.kookyungmin.WAOps.persistence">
+	
+	<!-- com.kookyungmin.waops.persistence 패키지를 자동으로 인식해서 DAO 구현체 찾음 -->
+	<context:component-scan base-package="com.kookyungmin.waops.persistence">
+	</context:component-scan>
+	
+	<!-- com.kookyungmin.waops.service 패키지를 자동으로 인식해서 Serivce 구현체 찾음 -->
+	<context:component-scan base-package="com.kookyungmin.waops.service">
 	</context:component-scan>		
 </beans>

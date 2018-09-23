@@ -11,6 +11,7 @@ body {
 
 a {
 	text-decoration : none !important;
+	color : #000;
 }
 
 li {
@@ -52,15 +53,12 @@ li {
 	height : 100%;
 }
 
-.center {
-	text-align : center;
-}
 
 /* -------------------header 끝 -------------------*/
 
 /* -------------------nav -------------------------*/
 .nav {
-	height : 100%;
+	height : 180%;
 }
 
 .nav>li>a {
@@ -74,9 +72,13 @@ li {
 	color : #fff;
 }
 
-.nav-active {
+.level1-active {
 	background: #ff9900 !important;
 	color : #fff !important;
+}
+
+.level2-active {
+	color : #337ab7 !important;
 }
 
 .level1>ul {
@@ -102,9 +104,35 @@ li {
 
 
 
-/* ---------------nav 끝 -------------------------- */
+/* --------------- nav 끝 -------------------------- */
+
+
+.form-control[readonly] {
+    background-color: #ffffe6;
+    opacity: 1;
+}
+
+
+/* --------------- table -------------------------- */
+
+table>thead {
+	background : #ff9900;
+	color : #fff;
+}
 
 /* ---------------display ------------------------- */
+
+.center {
+	text-align : center;
+}
+
+.right {
+	text-align : right
+}
+
+.left {
+	text-align : lefth;
+}
 
 .display-n {
 	display : none;
@@ -122,6 +150,14 @@ li {
 
 .w-80 {
 	width : 80%;
+}
+
+.w-30 {
+	width : 30%;
+}
+
+.w-10 {
+	width : 10%;
 }
 
 .w-15 {

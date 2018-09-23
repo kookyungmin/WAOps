@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8" />
+	<title>hbsTest</title>
+</head>
+<link rel="stylesheet" href="/resources/css/WAOps.css" />
+<body>
+	<script id="template1" type="text/x-handlebars-template" class="center">
+		<div>
+			name: {{name}}, id: {{id}}
+		</div>
+	</script>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/resources/js/handlebars-v4.0.12.js"></script>
+	<script src="/resources/js/moment-min.js"></script>
+	<script src="/resources/js/hbs.js"></script>
+	
+	<script>
+		let jsonData = {
+			"name" : "구경민",
+			"id" : "꾸리"
+		}
+		renderHbs("template1", jsonData);
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD 선언 -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="QuestionMapper">
+	<select id="listPage" resultType="Question">
+		select *
+		from question
+		where qno > 0
+		order by qno desc, regdate desc
+	</select>
+	<select id="getTotalNum" resultType="int">
+		select count(qno)
+		from question
+		where qno > 0
+	</select>
+	<insert id="register">
+		insert into question (title, content, writer, score)
+		values (#{title}, #{content}, #{writer}, #{score})
+	</insert>
+	<select id="read" resultType="Question">
+		select *
+		from question
+		where qno = #{qno}
+	</select>
+</mapper>
