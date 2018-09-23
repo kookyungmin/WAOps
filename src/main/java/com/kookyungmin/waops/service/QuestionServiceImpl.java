@@ -33,5 +33,15 @@ public class QuestionServiceImpl implements QuestionService{
 		logger.debug("QuestionServiceImpl.read()>>> qno={}",qno);
 		return questionDAO.read(qno);
 	}
+	@Override
+	public int delete(int qno) throws Exception {
+		logger.debug("QuestionServiceImpl.delete()>>> qno={}",qno);
+		return questionDAO.delete(qno);
+	}
+	@Override
+	public int update(Question question) throws Exception {
+		logger.debug("QuestionServiceImpl.update()>>> question={}",question);
+		return questionDAO.update(question);
+	}
 
 }

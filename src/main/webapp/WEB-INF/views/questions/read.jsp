@@ -14,8 +14,10 @@
     	<div class="mg-bottom10 o-h">
     		<h4 class="f-l">내용:</h4>
     		<div class="f-r">
-  				<button id="btnModQuestion" class="btn btn-warning btn-sm">수정</button>
-  				<button class="btn btn-danger btn-sm">삭제</button>
+  				<a href="/questions/update?qno={{qno}}">
+					<button id="btnModQuestion" class="btn btn-warning btn-sm">수정</button>
+				</a>
+  				<button class="btn btn-danger btn-sm" onclick=remove({{qno}})>삭제</button>
   				<a href="/questions/all"><button class="btn btn-primary btn-sm">목록</button></a>
   			</div>
     	</div>

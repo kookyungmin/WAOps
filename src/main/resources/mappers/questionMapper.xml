@@ -26,4 +26,13 @@
 		from question
 		where qno = #{qno}
 	</select>
+	<delete id="delete">
+		delete from question
+		where qno = #{qno}
+	</delete>
+	<update id="update">
+		update question
+		set content = #{content}, title = #{title}, score = #{score}
+		where qno = #{qno}
+	</update>
 </mapper>

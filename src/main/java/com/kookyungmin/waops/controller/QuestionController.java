@@ -59,4 +59,27 @@ public class QuestionController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@RequestMapping(value="/{qno}", method = RequestMethod.PUT)
+	public ResponseEntity<Integer> update(@RequestBody Question question, @PathVariable int qno){
+		logger.debug("QuestionController.update()>>>> question={}, qno={}", question, qno);
+		try {
+			question.setQno(qno);
+			int res = service.update(question);
+			return new ResponseEntity<>(res, HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@RequestMapping(value="/{qno}", method = RequestMethod.DELETE)
+	public ResponseEntity<Integer> delete(@PathVariable int qno){
+		logger.debug("QuestionController.read()>>>> qno={}", qno);
+		try {
+			int res = service.delete(qno);
+			return new ResponseEntity<>(res, HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
 }

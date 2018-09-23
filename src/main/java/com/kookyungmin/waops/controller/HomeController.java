@@ -26,7 +26,16 @@ public class HomeController {
 	public String registerQuestion(Model model) {
 		logger.debug("registerQuestion>>>>>>>>");
 		model.addAttribute("myCondition", "question");
-		model.addAttribute("status","register");
+		model.addAttribute("isEdit", false);
+		return "/questions/register";
+	}
+	
+	@RequestMapping(value = "/questions/update", method = RequestMethod.GET)
+	public String updateQuestion(@RequestParam int qno, Model model) {
+		logger.debug("registerQuestion>>>>>>>>qno={}", qno);
+		model.addAttribute("myCondition", "question");
+		model.addAttribute("isEdit", true);
+		model.addAttribute("qno", qno);
 		return "/questions/update";
 	}
 	

@@ -10,4 +10,6 @@ public interface QuestionDAO{
 	int getTotalNum() throws Exception;
 	int register(Question question) throws Exception;
 	Question read(int qno) throws Exception;
+	int delete(int qno) throws Exception;
+	int update(Question question) throws Exception;
 }

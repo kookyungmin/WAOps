@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,5 +58,22 @@ public class QuestionDAOTest {
 		assertEquals(question.getTitle(), "ㅇㅇ");
 		assertEquals(question.getWriter(), "ㅇㅇ");
 		assertEquals(question.getScore(), 5);
+	}
+	@Ignore
+	public void deleteTest() throws Exception{
+		logger.debug("deleteTest>>>");
+		int res = questionDAO.delete(17);
+		assertEquals(res, 1);
+	}
+	@Test
+	public void updateTest() throws Exception{
+		logger.debug("updateTest>>>");
+		Question question = new Question();
+		question.setQno(19);
+		question.setTitle("수정 테스트");
+		question.setContent("수정 테스트입니다");
+		question.setScore(100);
+		int res = questionDAO.update(question);
+		assertTrue(res == 1);
 	}
 }
