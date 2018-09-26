@@ -6,7 +6,13 @@
 <%@ include file="../include/nav.jsp" %>
 
 	<h1>질문/답변</h1>
-	
+	<div class="mg-bottom10 f-r w-15">
+ 		<select class="form-control" id="perPageNum" onchange="changePerPageNum()">
+  			<option value="5">5개씩 보기</option>
+ 			<option value="10">10개씩 보기</option>
+  			<option value="15">15개씩 보기</option>
+		</select>
+	</div>
 	<table class="table table-hover w-80 mg-top30">
 		<thead>
 			<tr>
@@ -22,9 +28,8 @@
 		<script id="questionlist" type="text/x-handlebars-template">
 			{{#each list}}
 				<tr>
-					
 					<td>{{qno}}</td>
-					<td><a href="/questions/read?qno={{qno}}">{{title}}</a></td>
+					<td><a href="/questions/read?qno={{qno}}&page={{../currentPage}}&perPageNum={{../perPageNum}}">{{title}}</a></td>
 					<td><a href="#">{{writer}}</a></td>
 					<td>{{score}}</td>
 					<td>{{lightcnt}}</td>
@@ -34,14 +39,33 @@
 			{{/each}}
 		</script>
 	</table>
-	<a href="/questions/register"><button class="btn btn-warning">질문 등록</button></a>
+	<script id="pagination" type="text/x-handlebars-template">
+		<a href="/questions/register"><button class="btn btn-warning">질문 등록</button></a>
+  		<div class="center">
+			<ul class="pagination mg-0">
+    			<li {{#unless pageMaker.prev}}class="disabled"{{/unless}}>
+    				<a href="javascript:;" onclick="listPage({{pageData.prevPage}})" aria-label="Previous">
+    					<span aria-hidden="true">&laquo;</span>
+    				</a>
+    			</li>
+
+				{{#each pageData.pages as |page|}}
+    				<li {{#if (eq ../currentPage page)}}class="active"{{/if}}>
+						<a href="javascript:;" onclick="listPage({{page}})">{{page}}</a>
+					</li>
+    			{{/each}}
+    		
+				<li {{#unless pageMaker.next}}class="disabled"{{/unless}}>
+      				<a href="javascript:;" onclick="listPage({{pageData.nextPage}})" aria-label="Next">
+        				<span aria-hidden="true">&raquo;</span>
+      				</a>
+    			</li>
+  			</ul>
+		</div>
+  	</script>
 <%@ include file="../include/footer.jsp" %>
 
 <script>
-	Criteria = {
-		page : 1,
-		perPageNum : 10
-	};
-	listPage(Criteria);
+	listPage(${cri.page}, ${cri.perPageNum});
 </script>
 

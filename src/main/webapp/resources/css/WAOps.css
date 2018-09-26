@@ -195,6 +195,10 @@ table>thead {
 	border-radius : 15px;
 }
 
+.mg-0 {
+	margin : 0 !important;
+}
+
 .mg-left10 {
 	margin-left : 10px !important;
 }

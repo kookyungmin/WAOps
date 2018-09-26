@@ -1,6 +1,8 @@
 package com.kookyungmin.waops.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kookyungmin.waops.domain.Criteria;
+import com.kookyungmin.waops.domain.PageMaker;
 import com.kookyungmin.waops.domain.Question;
 import com.kookyungmin.waops.service.QuestionService;
 
@@ -27,13 +30,21 @@ public class QuestionController {
 	private QuestionService service;
 	
 	@RequestMapping(value = "/all/{page}/{perPageNum}", method = RequestMethod.GET)
-	public ResponseEntity<List<Question>> listPage(@PathVariable("page") int page,
-			                                       @PathVariable("perPageNum") int perPageNum){
+	public ResponseEntity<Map<String, Object>> listPage(@PathVariable("page") int page,
+			                                            @PathVariable("perPageNum") int perPageNum){
 		logger.debug("QuestionController.listPage()>>>> page={}, perPageNum={}",page,perPageNum);
 		try {
 			Criteria cri = new Criteria(page, perPageNum);
+			
+			int totalCount = service.getTotalCount();
 			List<Question> list = service.listPage(cri);
-			return new ResponseEntity<>(list, HttpStatus.OK);
+			PageMaker pm = new PageMaker(cri, totalCount);
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("pageMaker", pm);
+			map.put("list",list);
+			
+			return new ResponseEntity<>(map, HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

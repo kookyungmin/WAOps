@@ -43,5 +43,10 @@ public class QuestionServiceImpl implements QuestionService{
 		logger.debug("QuestionServiceImpl.update()>>> question={}",question);
 		return questionDAO.update(question);
 	}
+	@Override
+	public int getTotalCount() throws Exception {
+		logger.debug("QuestionServiceImpl.getTotalCount()>>> ");
+		return questionDAO.getTotalNum();
+	}
 
 }

@@ -38,7 +38,7 @@ public class QuestionDAOTest {
 		logger.debug("listPageTest>>>");
 		Criteria cri = new Criteria();
 		List<Question> list = questionDAO.listPage(cri);
-		assertEquals(list.size(), getTotalNum);
+		assertEquals(list.size(), cri.getPerPageNum());
 	}
 	@Ignore
 	public void registerTest() throws Exception{

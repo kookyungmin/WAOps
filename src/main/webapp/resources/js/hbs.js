@@ -40,3 +40,6 @@
 			return str;
 		return str.replace(/[\r\n]/g,'<br>');
 	})
+	Handlebars.registerHelper('eq', function(a, b){
+		return a == b;
+	})

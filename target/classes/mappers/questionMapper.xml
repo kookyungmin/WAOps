@@ -11,6 +11,7 @@
 		from question
 		where qno > 0
 		order by qno desc, regdate desc
+		limit #{pageStart} ,#{perPageNum} 
 	</select>
 	<select id="getTotalNum" resultType="int">
 		select count(qno)

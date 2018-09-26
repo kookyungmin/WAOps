@@ -9,7 +9,9 @@
 			<ul class="level2">
 				<li><a href="#">학원/회사 평가</a></li>
 				<li><a href="#">스터디 모집</a></li>
-				<li class="question"><a href="/questions/all">질문/답변</a></li>
+				<li class="question">
+					<a href="javascript:postToUrl('/questions/all',{'page':1,'perPageNum':5});">질문/답변</a>
+				</li>
 			</ul>
 		</li>
 		<li class="level1"><a href="#">교육</a></li>

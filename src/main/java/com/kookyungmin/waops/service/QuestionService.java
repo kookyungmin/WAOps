@@ -11,4 +11,5 @@ public interface QuestionService {
 	Question read(int qno) throws Exception;
 	int delete(int qno) throws Exception;
 	int update(Question question) throws Exception;
+	int getTotalCount() throws Exception;
 }

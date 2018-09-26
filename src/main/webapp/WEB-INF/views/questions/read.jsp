@@ -14,11 +14,13 @@
     	<div class="mg-bottom10 o-h">
     		<h4 class="f-l">내용:</h4>
     		<div class="f-r">
-  				<a href="/questions/update?qno={{qno}}">
-					<button id="btnModQuestion" class="btn btn-warning btn-sm">수정</button>
+  				<a href="/questions/update?qno={{qno}}&page={{page}}&perPageNum={{perPageNum}}">
+					<button class="btn btn-warning btn-sm">수정</button>
 				</a>
   				<button class="btn btn-danger btn-sm" onclick=remove({{qno}})>삭제</button>
-  				<a href="/questions/all"><button class="btn btn-primary btn-sm">목록</button></a>
+  				<a href="javascript:postToUrl('/questions/all',{ 'page' : {{page}}, 'perPageNum' : {{perPageNum}} });">
+					<button class="btn btn-primary btn-sm">목록</button>
+				</a>
   			</div>
     	</div>
   		<div class="mg-bottom10">  		
@@ -34,19 +36,5 @@
 <%@ include file="../include/footer.jsp" %>
 
 <script>
-	read(${qno});
-	let lightOn = false;
-	$('#goodBtn').on('click', ()=>{
-		if(lightOn == false){
-			console.debug(lightOn);
-			lightOn = true;
-			$('.light>img').attr({'src':'/resources/img/light-on.png'});
-			$('#goodBtn').text('lightOFF!');
-		}else{
-			console.debug(lightOn);
-			lightOn = false;
-			$('.light>img').attr({'src':'/resources/img/light-off.png'});
-			$('#goodBtn').text('lightON!');
-		}
-	})
+	read(${qno}, ${cri.page}, ${cri.perPageNum});
 </script>
