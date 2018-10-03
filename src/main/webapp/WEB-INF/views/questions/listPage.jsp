@@ -4,16 +4,16 @@
 
 <%@ include file="../include/header.jsp" %>
 <%@ include file="../include/nav.jsp" %>
-
+<div class="content">
 	<h1>질문/답변</h1>
-	<div class="mg-bottom10 f-r w-15">
- 		<select class="form-control" id="perPageNum" onchange="changePerPageNum()">
+	<div class="mg-bottom10 right">
+ 		<select class="form-control w-15 display-i" id="perPageNum" onchange="changePerPageNum()">
   			<option value="5">5개씩 보기</option>
  			<option value="10">10개씩 보기</option>
   			<option value="15">15개씩 보기</option>
 		</select>
 	</div>
-	<table class="table table-hover w-80 mg-top30">
+	<table class="table table-hover mg-top30">
 		<thead>
 			<tr>
 				<td class="w-10">번호</td>
@@ -63,6 +63,7 @@
   			</ul>
 		</div>
   	</script>
+</div>
 <%@ include file="../include/footer.jsp" %>
 
 <script>

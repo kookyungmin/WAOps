@@ -15,6 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 	<!--jQuery.3.3.1 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/resources/js/sticky-kit.js"></script>
 </head>
 <body>
 	<!-- header -->

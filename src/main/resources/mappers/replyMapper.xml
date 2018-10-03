@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD 선언 -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="ReplyMapper">
+	<select id="listPage" resultType="Reply">
+		select *
+		from questionReply
+		where qno = #{qno}
+		order by qno desc, regdate asc
+		limit #{cri.pageStart} ,#{cri.perPageNum} 
+	</select>
+	
+	<select id="getTotalNum" resultType="int">
+		select count(rno)
+		from questionReply
+		where qno = #{qno}
+	</select>
+	
+	<insert id="register">
+		insert into questionReply (qno, replytext, replyer)
+		values (#{qno}, #{replytext}, #{replyer})
+	</insert>
+	
+	<select id="read" resultType="Reply">
+		select *
+		from questionReply
+		where rno = #{rno}
+	</select>
+	<delete id="delete">
+		delete from questionReply
+		where rno = #{rno}
+	</delete>
+	<update id="update">
+		update questionReply
+		set replytext = #{replytext}
+		where rno = #{rno}
+	</update>
+</mapper>

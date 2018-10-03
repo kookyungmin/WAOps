@@ -4,10 +4,10 @@
 
 <%@ include file="../include/header.jsp" %>
 <%@ include file="../include/nav.jsp" %>
-	
+<div class="content">	
 	<h1>질문 수정</h1>
 	
-	<script id="readQuestion" type="text/x-handlebars-template" class="w-80 f-l mg-top30">
+	<script id="readQuestion" type="text/x-handlebars-template" class="mg-top30">
 		<div class="mg-bottom10">
 			<label for="writer">작성자</label>
     		<input type="text" class="form-control" id="writer" value="{{writer}}" oninput="checkEdit(true)" readonly="readonly">
@@ -41,8 +41,7 @@
 			</a>
   		</div>
 	</script>
-  	
-	
+</div>	
 <%@ include file="../include/footer.jsp" %>
 
 <script>

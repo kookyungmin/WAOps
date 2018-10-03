@@ -16,6 +16,5 @@
 	<script src="/resources/js/hbs.js" type="text/javascript"></script>
 	<script src="/resources/js/WAops.js" type="text/javascript"></script>
 	<script src="/resources/js/question.js" type="text/javascript"></script>
-	
 </body>
 </html>

@@ -61,7 +61,7 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/{qno}", method = RequestMethod.GET)
-	public ResponseEntity<Question> read(@PathVariable int qno){
+	public ResponseEntity<Question> read(@PathVariable("qno") int qno){
 		logger.debug("QuestionController.read()>>>> qno={}", qno);
 		try {
 			Question question = service.read(qno);
@@ -72,7 +72,8 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/{qno}", method = RequestMethod.PUT)
-	public ResponseEntity<Integer> update(@RequestBody Question question, @PathVariable int qno){
+	public ResponseEntity<Integer> update(@PathVariable("qno") int qno,
+										  @RequestBody Question question){
 		logger.debug("QuestionController.update()>>>> question={}, qno={}", question, qno);
 		try {
 			question.setQno(qno);
@@ -84,8 +85,8 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/{qno}", method = RequestMethod.DELETE)
-	public ResponseEntity<Integer> delete(@PathVariable int qno){
-		logger.debug("QuestionController.read()>>>> qno={}", qno);
+	public ResponseEntity<Integer> delete(@PathVariable("qno") int qno){
+		logger.debug("QuestionController.delete()>>>> qno={}", qno);
 		try {
 			int res = service.delete(qno);
 			return new ResponseEntity<>(res, HttpStatus.OK);

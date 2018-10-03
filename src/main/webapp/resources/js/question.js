@@ -26,6 +26,7 @@ const listPage = (page, perPageNum) => {
 
 
 const update = (isEdit) => {
+	if($('#btnModQuestion').attr('class').includes('disabled')) return;
 	let jsonData = {};
 	jsonData.title = $('#title').val();
 	jsonData.content = $('#content').val();

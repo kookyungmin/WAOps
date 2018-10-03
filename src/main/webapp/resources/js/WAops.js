@@ -17,15 +17,15 @@ $(function(){
 		if(lightOn == false){
 			console.debug(lightOn);
 			lightOn = true;
-			$('.light>img').attr({'src':'/resources/img/light-on.png'});
+			$('#light>img').attr({'src':'/resources/img/light-on.png'});
 			$('#goodBtn').text('lightOFF!');
 		}else{
 			console.debug(lightOn);
 			lightOn = false;
-			$('.light>img').attr({'src':'/resources/img/light-off.png'});
+			$('#light>img').attr({'src':'/resources/img/light-off.png'});
 			$('#goodBtn').text('lightON!');
 		}
-	})	
+	})
 })
 
 // sendAjax

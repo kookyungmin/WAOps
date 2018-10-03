@@ -12,7 +12,6 @@ public class PageMaker {
 	private int endPage;
 	private int totalCount;
 	
-	
 	public PageMaker(Criteria cri, int totalCount) {
 		this.cri = cri;
 		this.totalCount = totalCount;
@@ -22,9 +21,9 @@ public class PageMaker {
 	private void calcData() {
 		endPage = ((cri.getPage() - 1)/10 + 1) * displayCount;
 		startPage = (endPage - displayCount) + 1;
-		int tempEndPage = (int)Math.ceil(totalCount/(double)cri.getPerPageNum());
-		if(tempEndPage < endPage) {
-			endPage = tempEndPage;
+		int tempPage = (int)Math.ceil(totalCount/(double)cri.getPerPageNum());
+		if(tempPage < endPage) {
+			endPage = tempPage;
 		}
 		prev = startPage == 1 ? false : true;
 		next = totalCount <= (endPage * cri.getPerPageNum()) ? false : true;	
