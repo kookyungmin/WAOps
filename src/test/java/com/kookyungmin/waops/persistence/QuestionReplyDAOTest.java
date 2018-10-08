@@ -32,7 +32,6 @@ public class QuestionReplyDAOTest {
 	
 	@Test
 	public void getTotalNumTest() throws Exception{
-		int qno = 1;
 		getTotalCount = replyDAO.getTotalCount(1);
 		logger.debug("getTotalNumTest>>> getTotalCount={}", getTotalCount);
 	}
