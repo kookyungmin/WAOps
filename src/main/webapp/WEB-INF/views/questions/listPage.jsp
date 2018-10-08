@@ -34,7 +34,7 @@
 					<td>{{score}}</td>
 					<td>{{lightcnt}}</td>
 					<td>{{viewcnt}}</td>
-					<td>{{fullTime regdate}}</td>
+					<td>{{fullTime updatedate}}</td>
 				</tr>
 			{{/each}}
 		</script>

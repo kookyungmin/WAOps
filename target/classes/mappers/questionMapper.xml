@@ -10,7 +10,7 @@
 		select *
 		from question
 		where qno > 0
-		order by qno desc, regdate desc
+		order by qno desc
 		limit #{pageStart} ,#{perPageNum} 
 	</select>
 	<select id="getTotalNum" resultType="int">

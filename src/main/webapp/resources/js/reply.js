@@ -50,6 +50,18 @@ const updateReply = (isEdit, $replyText, $replyer) => {
 	}, method, jsonData);
 }
 
+const deleteReply = () => {
+	url = replyURL + "/" + gRno;
+	sendAjax(url, (isSuccess, res) => {
+		if(isSuccess){
+			if(!confirm("정말로 삭제하시겠습니까??")) return;
+			alert("댓글 삭제가 완료되었습니다.");
+			replylistPage(gReplyPage);
+		}
+	}, 'DELETE');
+}
+
+
 const clickModBtnReply = (rno) => {
 	gRno = rno || gRno;
 	gReplyText = $('#replyText' + rno).val() || gReplyText;

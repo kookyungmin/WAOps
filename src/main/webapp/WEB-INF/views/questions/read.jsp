@@ -53,7 +53,7 @@
 
  				<span id="replyWriter{{rno}}">작성자: {{replyer}}</span>
 
-				<span class="f-r">작성일: {{fullTime regdate}}</span>
+				<span class="f-r">작성일: {{fullTime updatedate}}</span>
 
  				<textarea id="replyText{{rno}}" rows="4" class="form-control mg-top10 mg-bottom10" readonly
 					oninput="checkEditReply(true)">{{replytext}}</textarea>
@@ -61,7 +61,8 @@
 				<button id="btnUpdateReply{{rno}}" class="btn btn-primary btn-sm hidden"
 					onclick="updateReply(true, $('#replyText{{rno}}'))">수정</button>
 				
-				<button id="btnDeleteReply{{rno}}" class="btn btn-danger btn-sm hidden">삭제</button>
+				<button id="btnDeleteReply{{rno}}" class="btn btn-danger btn-sm hidden"
+					onclick="deleteReply()">삭제</button>
 				
 				<button id="btnCancleReply{{rno}}" class="btn btn-default btn-sm hidden"
 					onclick="clickCancleReply({{rno}})">취소</button>

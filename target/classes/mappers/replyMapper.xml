@@ -10,7 +10,7 @@
 		select *
 		from questionReply
 		where qno = #{qno}
-		order by qno desc, regdate asc
+		order by regdate asc
 		limit #{cri.pageStart} ,#{cri.perPageNum} 
 	</select>
 	
