@@ -8,7 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import javax.inject.Inject;
 
-import org.junit.Ignore;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,14 +37,14 @@ public class QuestionControllerTest {
 	//톰캣을 작동시키지 않아도 컨트롤러 테스트를 진행하게 해줌
 	private MockMvc mockmvc;
 	
-	@Ignore
+	@Before
 	public void setup() {
 		//스프링이 준 WebApplicationContext를 이용해서 mockmvc를 생성
 		this.mockmvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 		logger.debug("setup QuestionControllerTest>>>");
 	}
 	
-	@Ignore
+	@Test
 	public void testListPage() throws Exception{
 		logger.debug("QuestionControllerTest.testListPage()>>>>>>>>>>");
 		this.mockmvc.perform(get("/questions/all/1/10"))
@@ -52,14 +53,6 @@ public class QuestionControllerTest {
 					.andExpect(handler().handlerType(QuestionController.class))
 					.andExpect(handler().methodName("listPage"));
 	}
-	@Ignore
-	public void testregister() throws Exception{
-		logger.debug("QuestionControllerTest.testregister()>>>>>>>>>>");
-		this.mockmvc.perform(post("/questions"))
-					.andDo(print())
-					.andExpect(status().isOk())
-					.andExpect(handler().handlerType(QuestionController.class))
-					.andExpect(handler().methodName(""));
-	}
+	
 	
 }

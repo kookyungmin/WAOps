@@ -28,12 +28,12 @@ public class QuestionDAOTest {
 	@Inject
 	QuestionDAO questionDAO;
 	
-	@Ignore
+	@Test
 	public void getTotalNumTest() throws Exception{
 		getTotalNum = questionDAO.getTotalNum();
 		logger.debug("getTotalNumTest>>> getTotalNum={}", getTotalNum);
 	}
-	@Ignore
+	@Test
 	public void listPageTest() throws Exception{
 		logger.debug("listPageTest>>>");
 		Criteria cri = new Criteria();
