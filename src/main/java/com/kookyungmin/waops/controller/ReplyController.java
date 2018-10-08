@@ -53,7 +53,6 @@ private static Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	public ResponseEntity<Integer> register(@RequestBody Reply reply){
 		logger.debug("ReplyController.register()>>>> reply={}", reply);
 		try {
-			Map<String, Integer> map = new HashMap<>();
 			int res = service.register(reply);
 			return new ResponseEntity<>(res, HttpStatus.OK);
 		}catch(Exception e) {
