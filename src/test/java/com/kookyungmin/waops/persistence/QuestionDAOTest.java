@@ -65,7 +65,7 @@ public class QuestionDAOTest {
 		int res = questionDAO.delete(17);
 		assertEquals(res, 1);
 	}
-	@Test
+	@Ignore
 	public void updateTest() throws Exception{
 		logger.debug("updateTest>>>");
 		Question question = new Question();
