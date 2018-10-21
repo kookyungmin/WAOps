@@ -1,6 +1,8 @@
 package com.kookyungmin.waops.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -23,6 +25,8 @@ public class QuestionDAOImpl implements QuestionDAO{
 	private static final String READ = NS + ".read";
 	private static final String DELETE = NS + ".delete";
 	private static final String UPDATE = NS + ".update";
+	private static final String UPDATEREPLYCNT = NS + ".updateReplyCnt";
+	private static final String UPDATEVIEWCNT = NS + ".updateViewCnt";
 	
 	@Inject
 	SqlSession session;
@@ -61,6 +65,21 @@ public class QuestionDAOImpl implements QuestionDAO{
 	public int update(Question question) throws Exception {
 		logger.debug("QusetionDAOImpl.update()>>> qusetion={}", question);
 		return session.update(UPDATE, question);
+	}
+
+	@Override
+	public int updateReplyCnt(Integer qno, int amount) throws Exception {
+		logger.debug("QuestionDAOImpl.updateReplyCnt() >>> qno= {}, amount={}" , qno, amount);
+		Map<String, Object> map = new HashMap<>();
+		map.put("qno", qno);
+		map.put("amount", amount);
+		return session.update(UPDATEREPLYCNT, map);
+	}
+
+	@Override
+	public void updateViewCnt(int qno) throws Exception {
+		session.update(UPDATEVIEWCNT, qno);
+		
 	}
 
 }

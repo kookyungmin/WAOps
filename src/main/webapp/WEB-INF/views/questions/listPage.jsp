@@ -29,7 +29,11 @@
 			{{#each list}}
 				<tr>
 					<td>{{qno}}</td>
-					<td><a href="/questions/read?qno={{qno}}&page={{../currentPage}}&perPageNum={{../perPageNum}}">{{title}}</a></td>
+					<td>
+						<a href="/questions/read?qno={{qno}}&page={{../currentPage}}&perPageNum={{../perPageNum}}">
+						{{title}} [{{replycnt}}]
+						</a>
+					</td>
 					<td><a href="#">{{writer}}</a></td>
 					<td>{{score}}</td>
 					<td>{{lightcnt}}</td>

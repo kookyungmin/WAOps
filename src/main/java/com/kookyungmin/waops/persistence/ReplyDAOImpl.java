@@ -26,6 +26,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 	private static final String READ = NS + ".read";
 	private static final String DELETE = NS + ".delete";
 	private static final String UPDATE = NS + ".update";
+	private static final String GETQNO = NS + ".getQno";
 	
 	@Inject
 	private SqlSession session;
@@ -67,6 +68,12 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public int register(Reply reply) throws Exception {
 		logger.debug("ReplyDAOImpl.register()>>> reply={}", reply);
 		return session.insert(REGISTER, reply);
+	}
+
+	@Override
+	public int getQno(int rno) throws Exception {
+		logger.debug("ReplyDAOImpl.getQno()>>> rno={}", rno);
+		return session.selectOne(GETQNO, rno);
 	}
 
 }

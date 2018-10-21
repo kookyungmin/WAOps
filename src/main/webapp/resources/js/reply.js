@@ -41,7 +41,8 @@ const updateReply = (isEdit, $replyText, $replyer) => {
 				alert("댓글 등록이 완료되었습니다.");
 				$replyer.val("");
 				$replyText.val("");
-				replylistPage();
+				replylistPage(res.lastPage);
+				window.scrollTo(0, document.body.scrollHeight);
 			}else {
 				alert("댓글 수정이 완료되었습니다.");
 				replylistPage(gReplyPage);

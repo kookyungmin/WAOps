@@ -12,4 +12,6 @@ public interface QuestionDAO{
 	Question read(int qno) throws Exception;
 	int delete(int qno) throws Exception;
 	int update(Question question) throws Exception;
+	int updateReplyCnt(Integer qno, int amount) throws Exception;
+	void updateViewCnt(int qno) throws Exception;
 }

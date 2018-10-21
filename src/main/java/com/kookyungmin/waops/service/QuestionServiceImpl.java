@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kookyungmin.waops.domain.Criteria;
 import com.kookyungmin.waops.domain.Question;
@@ -18,6 +20,7 @@ public class QuestionServiceImpl implements QuestionService{
 	
 	@Inject
 	QuestionDAO questionDAO;
+	
 	@Override
 	public List<Question> listPage(Criteria cri) throws Exception{
 		logger.debug("QuestionServiceImpl.listPage()>>> Criteria={}",cri);
@@ -28,9 +31,13 @@ public class QuestionServiceImpl implements QuestionService{
 		logger.debug("QuestionServiceImpl.register()>>> Question={}",question);
 		return questionDAO.register(question);
 	}
+	
+	//대부분의 데이터베이스가 기본으로 사용하는 수준으로, 다른 연결이 커밋하지 않은 데이터는 볼 수 없도록 함
+	@Transactional(isolation=Isolation.READ_COMMITTED)
 	@Override
 	public Question read(int qno) throws Exception {
 		logger.debug("QuestionServiceImpl.read()>>> qno={}",qno);
+		questionDAO.updateViewCnt(qno);
 		return questionDAO.read(qno);
 	}
 	@Override

@@ -6,6 +6,11 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="ReplyMapper">
+	<select id="getQno" resultType="int">
+		select qno
+		from questionReply
+		where rno = #{rno}
+	</select>
 	<select id="listPage" resultType="Reply">
 		select *
 		from questionReply

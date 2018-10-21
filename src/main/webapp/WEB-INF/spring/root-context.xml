@@ -5,11 +5,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -30,11 +32,24 @@
 	    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
+	<!-- aop 자동적인 Proxy 객체 생성 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<!-- 트랜잭션 애노테이션 -->
+	<tx:annotation-driven />
+	
+	<!-- 트랜잭션 관리 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 	<!-- com.kookyungmin.waops.persistence 패키지를 자동으로 인식해서 DAO 구현체 찾음 -->
 	<context:component-scan base-package="com.kookyungmin.waops.persistence">
 	</context:component-scan>
-	
 	<!-- com.kookyungmin.waops.service 패키지를 자동으로 인식해서 Serivce 구현체 찾음 -->
 	<context:component-scan base-package="com.kookyungmin.waops.service">
-	</context:component-scan>		
+	</context:component-scan>
+	<context:component-scan base-package="com.kookyungmin.waops.aop">
+	</context:component-scan>
+	<aop:config></aop:config>			
 </beans>

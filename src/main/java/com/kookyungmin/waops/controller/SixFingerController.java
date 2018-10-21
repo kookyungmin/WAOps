@@ -29,10 +29,6 @@ public class SixFingerController {
 											  @RequestParam("id") String id){
 		logger.debug("SixFingerController.lightSwitch()>>>> state={}, id={}", state, id);
 		try {
-			if(!lightState.containsKey(id)) {
-				Exception e = new Exception("기기의 와이파이 연결이 안되었습니다.");
-				throw e;
-			}
 			lightState.replace(id, state);
 			return new ResponseEntity<>(lightState.get(id), HttpStatus.OK);
 		}catch(Exception e) {
@@ -44,10 +40,6 @@ public class SixFingerController {
 	public ResponseEntity<Object> sendTemperature(@RequestParam("id") String id){
 		logger.debug("SixFingerController.sendTemperature()>>> id = {}", id);
 		try {
-			if(!temp.containsKey(id)) {
-				Exception e = new Exception("기기의 와이파이 연결이 안되었습니다.");
-				throw e;
-			}
 			return new ResponseEntity<>(temp.get(id), HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);

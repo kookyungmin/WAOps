@@ -50,11 +50,11 @@ private static Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	}
 
 	@RequestMapping(value="", method = RequestMethod.POST)
-	public ResponseEntity<Integer> register(@RequestBody Reply reply){
+	public ResponseEntity<Map<String, Object>> register(@RequestBody Reply reply){
 		logger.debug("ReplyController.register()>>>> reply={}", reply);
 		try {
-			int res = service.register(reply);
-			return new ResponseEntity<>(res, HttpStatus.OK);
+			Map<String, Object> map = service.register(reply);
+			return new ResponseEntity<>(map, HttpStatus.OK);
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

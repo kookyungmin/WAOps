@@ -36,4 +36,14 @@
 		set content = #{content}, title = #{title}, score = #{score}
 		where qno = #{qno}
 	</update>
+	<update id="updateReplyCnt">
+		update question
+		set replycnt = replycnt + #{amount}
+		where qno = #{qno}
+	</update>
+	<update id="updateViewCnt">
+		update question
+		set viewcnt = viewcnt + 1
+		where qno = #{qno}
+	</update>
 </mapper>
