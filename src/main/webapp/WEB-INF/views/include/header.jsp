@@ -12,9 +12,12 @@
 	<link rel="stylesheet" href="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/resources/css/WAOps.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-	<!--jQuery.3.3.1 -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--jQuery.2.1.4 -->
+	<script src="/resources/js/jQuery-2.1.4-min.js"></script>
+	<!-- jQuery Form -->
+	<script src="/resources/js/jQueryForm-min.js"></script>
 	<script src="/resources/js/sticky-kit.js"></script>
 </head>
 <body>

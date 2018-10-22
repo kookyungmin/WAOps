@@ -8,13 +8,14 @@
 	</footer>
 
 
-	
-	<!-- Bootstrap JavaScript -->
+
+<!-- Bootstrap JavaScript -->
 	<script src="/resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="/resources/js/handlebars-v4.0.12.js" type="text/javascript"></script>
 	<script src="/resources/js/moment-min.js"></script>
 	<script src="/resources/js/hbs.js" type="text/javascript"></script>
 	<script src="/resources/js/WAops.js" type="text/javascript"></script>
 	<script src="/resources/js/question.js" type="text/javascript"></script>
+	
 </body>
 </html>

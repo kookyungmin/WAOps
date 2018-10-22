@@ -44,4 +44,8 @@
 		set replytext = #{replytext}
 		where rno = #{rno}
 	</update>
+	<update id="deleteAll">
+		delete from questionReply
+		where qno = #{qno}
+	</update>
 </mapper>

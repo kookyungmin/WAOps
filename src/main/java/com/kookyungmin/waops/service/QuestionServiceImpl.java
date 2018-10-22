@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kookyungmin.waops.domain.Criteria;
 import com.kookyungmin.waops.domain.Question;
 import com.kookyungmin.waops.persistence.QuestionDAO;
+import com.kookyungmin.waops.persistence.ReplyDAO;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
@@ -20,6 +21,9 @@ public class QuestionServiceImpl implements QuestionService{
 	
 	@Inject
 	QuestionDAO questionDAO;
+	
+	@Inject
+	ReplyDAO replyDAO;
 	
 	@Override
 	public List<Question> listPage(Criteria cri) throws Exception{
@@ -43,6 +47,7 @@ public class QuestionServiceImpl implements QuestionService{
 	@Override
 	public int delete(int qno) throws Exception {
 		logger.debug("QuestionServiceImpl.delete()>>> qno={}",qno);
+		replyDAO.deleteAll(qno);
 		return questionDAO.delete(qno);
 	}
 	@Override

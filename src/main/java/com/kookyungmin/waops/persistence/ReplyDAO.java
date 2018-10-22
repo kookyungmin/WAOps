@@ -13,4 +13,5 @@ public interface ReplyDAO {
 	int delete(int rno) throws Exception;
 	int register(Reply reply) throws Exception;
 	int getQno(int rno) throws Exception;
+	void deleteAll(int qno) throws Exception;
 }

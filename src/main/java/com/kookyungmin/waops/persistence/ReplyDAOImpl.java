@@ -27,6 +27,8 @@ public class ReplyDAOImpl implements ReplyDAO{
 	private static final String DELETE = NS + ".delete";
 	private static final String UPDATE = NS + ".update";
 	private static final String GETQNO = NS + ".getQno";
+	private static final String DELETEALL = NS + ".deleteAll";
+
 	
 	@Inject
 	private SqlSession session;
@@ -74,6 +76,13 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public int getQno(int rno) throws Exception {
 		logger.debug("ReplyDAOImpl.getQno()>>> rno={}", rno);
 		return session.selectOne(GETQNO, rno);
+	}
+
+	@Override
+	public void deleteAll(int qno) throws Exception {
+		logger.debug("ReplyDAOImpl.deleteAll() >>> qno={}", qno);
+		session.delete(DELETEALL,qno);
+		
 	}
 
 }

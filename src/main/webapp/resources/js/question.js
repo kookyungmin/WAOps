@@ -84,6 +84,12 @@ const remove = (qno) => {
 	}, 'DELETE');
 }
 
+const cancle = (isEdit) => {
+	if(!isEdit){
+		postToUrl('/questions/all',{'page' : gPage, 'perPageNum' : gPerPageNum});
+	}
+}
+
 const changePerPageNum = () => {
 	gPerPageNum = $('#perPageNum').val() || gPerPageNum;
 	listPage();
