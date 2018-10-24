@@ -1,7 +1,6 @@
 package com.kookyngmin.waops.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.handler;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -9,7 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import javax.inject.Inject;
 
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +43,7 @@ public class QuestionControllerTest {
 		logger.debug("setup QuestionControllerTest>>>");
 	}
 	
-	@Test
+	@Ignore
 	public void testListPage() throws Exception{
 		logger.debug("QuestionControllerTest.testListPage()>>>>>>>>>>");
 		this.mockmvc.perform(get("/questions/all/1/10"))
