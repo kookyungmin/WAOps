@@ -19,7 +19,7 @@
 					{{fileName}}
 				</a>
 				{{#if gIsEditing}}
-					<a href="javascript:;" onclick="deleteFile()" class="btn btn-default btn-xs pull-right delbtn">
+					<a href="javascript:;" onclick="uploadCancle('{{fullName}}')" class="btn btn-default btn-xs pull-right delbtn">
 						<i class="fa fa-fw fa-remove"></i>
 					</a>
 				{{/if}}

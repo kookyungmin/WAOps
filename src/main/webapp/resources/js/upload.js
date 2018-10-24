@@ -61,8 +61,8 @@ const getFileInfo = (fullName) => {
 		let fileName, imgsrc, getLink;
 		let $isDirect = $('#isDirect'),
 		    isDirect = $isDirect && $isDirect.length && $isDirect.val() == "true";
-		
-		isDirect = isDirect ? true : gIsDirect;
+		isDirect = isDirect ? true : false;
+		gIsDirect = isDirect;
 		console.debug(isDirect);
 		/* http + // + localhost */
 		const uphost = window.location.protocol + "//" + window.location.hostname;
@@ -103,7 +103,41 @@ const getFileInfo = (fullName) => {
 			gIsEditing : gIsEditing
 		}
 }
+const uploadCancle = (fullName) => {
+	const uploadCancle = (isSuccess, res) => {
+		if(isSuccess){
+			let fileInfo = getFileInfo(fullName);
+			$('li#' + fileInfo.fileId).remove();
+			let tmpIdx = -1;
+			gUpFiles.forEach( (uf, idx)  => {
+				if(uf.fullName === fullName){
+					tmpIdx = idx;
+				}
+			})
+			gUpFiles.splice(tmpIdx, 1);
+		}
+	};
+	deleteFiles(uploadCancle, fullName);
+};
 
+
+const deleteFiles = (fn, fullName) => {
+	let jsonData = {};
+	let fileNames = [];
+	if(!fullName){
+		console.log("gUpFiles>>>", gUpFiles);
+		fileNames = [];
+		gUpFiles.forEach(file => {
+			fileNames.push(file.fullName);
+		});
+	}else{
+		fileNames.push(fullName);
+	}
+	console.log("fileNames>>>>" ,fileNames);
+	jsonData.fileNames = fileNames;
+	url = "/deleteFile?isDirect=" + gIsDirect;
+	sendAjax(url, fn, 'DELETE', jsonData);
+}
 
 const checkImageType = (fullName , isDirect) => {
 	if(isDirect){

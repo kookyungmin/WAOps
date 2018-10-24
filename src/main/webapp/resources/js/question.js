@@ -34,6 +34,12 @@ const update = (isEdit) => {
 	if(!isEdit){
 		method = 'POST';
 		jsonData.writer = $('#writer').val();
+		let fileNames = [];
+		gUpFiles.forEach(file => {
+			fileNames.push(file.fullName);
+		});
+		console.log("fileNames>>>>" ,fileNames);
+		jsonData.files = fileNames;
 		url = URL;
 	}else{
 		method = 'PUT';
@@ -86,7 +92,12 @@ const remove = (qno) => {
 
 const cancle = (isEdit) => {
 	if(!isEdit){
-		postToUrl('/questions/all',{'page' : gPage, 'perPageNum' : gPerPageNum});
+		const registCancle = (isSuccess, res) => {
+			if(isSuccess){
+				postToUrl('/questions/all',{'page' : gPage, 'perPageNum' : gPerPageNum});
+			}
+		};
+		deleteFiles(registCancle);
 	}
 }
 

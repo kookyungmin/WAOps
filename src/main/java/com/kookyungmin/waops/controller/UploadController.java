@@ -1,7 +1,9 @@
 package com.kookyungmin.waops.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -14,11 +16,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kookyungmin.waops.domain.FileNames;
 import com.kookyungmin.waops.service.QuestionService;
 import com.kookyungmin.waops.util.FileUtils;
 
@@ -78,6 +82,35 @@ public class UploadController {
 			return new ResponseEntity<>(IOUtils.toByteArray(in), headers, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/deleteFile", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteFile(@RequestBody FileNames f, boolean isDirect) throws Exception {
+		String[] fileNames = f.getFileNames();
+		logger.debug("deleteFile = {}", Arrays.toString(fileNames));
+		String updir = isDirect ? uploadDirectPath : uploadPath;
+		try {
+			int length = fileNames.length;
+			boolean isImage = false;
+			for(int i = 0; i < length; i++) {
+				String fileName = fileNames[i];
+				isImage = FileUtils.getMediaType(FileUtils.getFileExtension(fileName)) != null;
+				if(isImage) {
+					File cropImage = new File(updir + fileName);
+					cropImage.delete();
+					// /2018/09/27/c_abc.jpg -> /2018/09/27/abc.jpg
+					int lastSlash = fileName.lastIndexOf("/") + 1;
+					fileName = fileName.substring(0, lastSlash) + fileName.substring(lastSlash + 2);
+				}
+				File file = new File(updir + fileName);
+				file.delete();
+			}
+			return new ResponseEntity<>("deleted", HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 }
