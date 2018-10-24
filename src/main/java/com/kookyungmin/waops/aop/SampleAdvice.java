@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class SampleAdvice {
 	private static final Logger logger = LoggerFactory.getLogger(SampleAdvice.class);
 	
-	@Before("execution(* com.kookyungmin.waops.service.QuestionService*.listPage(..))")
+	@Before("execution(* com.kookyungmin.waops.service.QuestionService*.register(..))")
 	public void startLog(JoinPoint jp) {
 		logger.debug("startLog>>>>> pointcut={}, args={}", jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
 		
