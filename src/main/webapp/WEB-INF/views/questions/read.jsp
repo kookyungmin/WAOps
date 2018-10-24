@@ -9,7 +9,6 @@
 			<h2>{{title}}</h2>
 			<span class="mg-right30">작성자: {{writer}} </span>
 			<span class="mg-right30">채택점수: {{score}}</span>
-			<span>첨부파일: </span>
     	</div>
     	<div class="mg-bottom10 o-h">
     		<h4 class="f-l">내용:</h4>
@@ -33,6 +32,8 @@
  		<button id="goodBtn" class="btn btn-default btn-sm mg-right10">lightON!</button>
  		<hr />	
  	</div>
+ 	
+ 	<%@include file="uploadedFiles.jsp" %>
  	
  	<div id="insertReply" class="mg-bottom30">
  		<h4>답변 등록</h4>

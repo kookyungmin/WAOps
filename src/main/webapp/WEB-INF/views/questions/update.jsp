@@ -3,6 +3,7 @@
 
 <%@ include file="../include/header.jsp" %>
 <%@ include file="../include/nav.jsp" %>
+
 <div class="content">	
 	<h1>질문 수정</h1>
 	
@@ -29,10 +30,14 @@
   				<option value="100">100</option>
 			</select>
 		</div>
- 		<div class="mg-bottom30">
-    		<label for="inputFile">File input</label>
-    		<input type="file" id="inputFile">
-  		</div>
+ 		<div class="fileUpload mg-bottom10">
+			<label for="">파일 첨부</label>
+			<div class="fileDrop form-control">
+				파일을 올려놓으세요!
+			</div>
+			<span id="status" class="center mg-bottom10"></span>
+		</div>
+		<%@include file="uploadedFiles.jsp" %>
 		<div class="mg-bottom30">
   			<button id="btnModQuestion" class="btn btn-warning" onclick="update(true)">수정</button>
   			<a href="/questions/read?qno={{qno}}&page={{page}}&perPageNum={{perPageNum}}">
@@ -43,6 +48,8 @@
 </div>	
 <%@ include file="../include/footer.jsp" %>
 
+
 <script>
 	read(${qno}, ${cri.page}, ${cri.perPageNum});
+	gIsDirect = true;
 </script>

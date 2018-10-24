@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" %>
 
-<script src="/resources/js/upload.js" type="text/javascript"></script>
-
-
-
+<script src="/resources/js/upload.js"></script>
 <script id="uploadedFiles" type="text/x-handlebars-template" class="well o-h">
 	{{#each upFiles}}
 		<li id={{fileId}} class="f-l mg-right10">

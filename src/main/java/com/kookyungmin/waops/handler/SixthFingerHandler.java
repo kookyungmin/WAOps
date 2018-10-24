@@ -44,15 +44,19 @@ public class SixthFingerHandler extends TextWebSocketHandler{
 					if(receiveSession != null) {
 						receiveSession.sendMessage(new TextMessage(mg));
 					}
-				}else if(cmd.equals("temparature")) {
+				}else if(cmd.equals("temperature")) {
 					if(sender.equals("android")) {
+						logger.debug("android temperature id={}", id);
 						WebSocketSession receiveSession = sessions.get("arduino" + id);
 						if(receiveSession != null) {
 							receiveSession.sendMessage(new TextMessage(mg));
 						}
 					}else {
+						logger.debug("arduino temperature id={}", id);
 						WebSocketSession receiveSession = sessions.get("android" + id);
 						if(receiveSession != null) {
+							logger.debug("msg" + mg);
+							
 							receiveSession.sendMessage(new TextMessage(mg));
 						}
 					}
