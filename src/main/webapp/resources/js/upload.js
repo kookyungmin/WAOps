@@ -1,7 +1,9 @@
 const $fileDrop = $('.fileDrop'),
       $status = $('#status');
-let gIsDirect = false,
+let gIsDirect = true,
     gUpFiles = [],
+    gLoadedFiles = [],
+    gDeleteFiles = [],
     gUri = window.location.pathname,
     gIsRegister = gUri.indexOf('/register') !== -1,
     gIsUpdate = gUri.indexOf('/update') !== -1,
@@ -41,28 +43,39 @@ $('#form_attach').ajaxForm({
 	
 	complete : function(xhr){
 		console.debug("xhr>>>>", xhr);
-		
+		gIsEditFile = true;
+		checkEdit(true);
 		let resJson = xhr.responseJSON;
 		if (xhr.status !== 200) {
 			alert("업로드에 실패했습니다. (" + resJson + ")");
 		}
 		
 		resJson.forEach( rj => {
-			let jsonData = getFileInfo(rj);
+			let jsonData = getFileInfo(rj, true);
 			gUpFiles.push(jsonData);
 		})
 		
 		$status.html('파일 업로드 완료 : ' + '100%');
-		renderHbs('uploadedFiles', {upFiles: gUpFiles});
+		let Files = [];
+		if(gLoadedFiles.length > 0){
+			gLoadedFiles.forEach((lf) =>{
+				Files.push(lf);
+			})
+		}
+		gUpFiles.forEach((uf) => {
+			Files.push(uf);
+		})
+		renderHbs('uploadedFiles', {upFiles: Files});
 	}
 });
 
-const getFileInfo = (fullName) => {
+const getFileInfo = (fullName, isUpload) => {
+		isUpload = isUpload || false;
+	
 		let fileName, imgsrc, getLink;
 		let $isDirect = $('#isDirect'),
 		    isDirect = $isDirect && $isDirect.length && $isDirect.val() == "true";
-		isDirect = isDirect ? true : false;
-		gIsDirect = isDirect;
+		isDirect = isDirect ? true : gIsDirect;
 		console.debug(isDirect);
 		/* http + // + localhost */
 		const uphost = window.location.protocol + "//" + window.location.hostname;
@@ -100,39 +113,51 @@ const getFileInfo = (fullName) => {
 			getLink : getLink,
 			fullName : fullName,
 			fileId : fileId,
-			gIsEditing : gIsEditing
+			gIsEditing : gIsEditing,
+			isUpload : isUpload
 		}
 }
-const uploadCancle = (fullName) => {
-	const uploadCancle = (isSuccess, res) => {
-		if(isSuccess){
-			let fileInfo = getFileInfo(fullName);
-			$('li#' + fileInfo.fileId).remove();
-			let tmpIdx = -1;
-			gUpFiles.forEach( (uf, idx)  => {
-				if(uf.fullName === fullName){
-					tmpIdx = idx;
-				}
-			})
-			gUpFiles.splice(tmpIdx, 1);
-		}
-	};
-	deleteFiles(uploadCancle, fullName);
+const uploadCancle = (fullName, isUpload) => {
+	if(isUpload){
+		const uploadCancle = (isSuccess, res) => {
+			if(isSuccess){
+				removeFileList(fullName, isUpload, gUpFiles);
+			}
+		};
+		file = [];
+		file.push(getFileInfo(fullName, isUpload))
+		deleteFiles(uploadCancle, file);
+	}else{
+		removeFileList(fullName, isUpload, gLoadedFiles);
+		gDeleteFiles.push(getFileInfo(fullName, isUpload));
+	}
 };
 
+const removeFileList = (fullName, isUpload, Files) => {
+	let fileInfo = getFileInfo(fullName, isUpload);
+	$('li#' + fileInfo.fileId).remove();
+	let tmpIdx = -1;
+	Files.forEach( (uf, idx)  => {
+		if(uf.fullName === fullName){
+			tmpIdx = idx;
+		}
+	})
+	Files.splice(tmpIdx, 1);
+	gIsEditFile = true;
+	checkEdit(true);
+}
 
-const deleteFiles = (fn, fullName) => {
+const deleteFiles = (fn, Files) => {
+	console.log("Files>>>", Files);
+	if(!Files || Files.length <= 0){
+		return fn(true);
+	}
+	
 	let jsonData = {};
 	let fileNames = [];
-	if(!fullName){
-		console.log("gUpFiles>>>", gUpFiles);
-		fileNames = [];
-		gUpFiles.forEach(file => {
-			fileNames.push(file.fullName);
-		});
-	}else{
-		fileNames.push(fullName);
-	}
+	Files.forEach(file => {
+		fileNames.push(file.fullName);
+	});
 	console.log("fileNames>>>>" ,fileNames);
 	jsonData.fileNames = fileNames;
 	url = "/deleteFile?isDirect=" + gIsDirect;

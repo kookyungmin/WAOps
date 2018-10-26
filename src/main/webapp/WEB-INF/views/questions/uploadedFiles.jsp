@@ -16,7 +16,7 @@
 					{{fileName}}
 				</a>
 				{{#if gIsEditing}}
-					<a href="javascript:;" onclick="uploadCancle('{{fullName}}')" class="btn btn-default btn-xs pull-right delbtn">
+					<a href="javascript:;" onclick="uploadCancle('{{fullName}}', {{isUpload}})" class="btn btn-default btn-xs pull-right delbtn">
 						<i class="fa fa-fw fa-remove"></i>
 					</a>
 				{{/if}}
@@ -45,6 +45,21 @@
 			//아니면 다운로드
 			window.location.href = link;
 		}
+	}
+	const showAttaches = (qno) => {
+		sendAjax("/questions/getAttach/" + qno, (isSucess, res) => {
+			if(isSucess){
+				console.debug(res);
+				res.forEach( rj => {
+					let jsonData = getFileInfo(rj);
+					gLoadedFiles.push(jsonData);
+				});
+				renderHbs('uploadedFiles', {upFiles : gLoadedFiles});
+			}else {
+				console.debug("error on getAttach");
+			}
+		});
+		
 	}
 </script>
 

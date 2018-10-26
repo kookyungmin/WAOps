@@ -19,13 +19,15 @@ public class SixthFingerHandler extends TextWebSocketHandler{
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		//연결됐을 때
 		logger.debug("afterConnectionEstablished: {}" ,session);
 	}
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		logger.debug("handleTextMessage>>> session={}, message={}" ,session , message);
-		//protocol : cmd, sender, id, message 
+		//protocol : cmd, sender, id, message
+		//switch,android,sixthfinger1,"
 		String msg = message.getPayload();
 		if(StringUtils.isNotEmpty(msg)) {
 			String[] strs = msg.split(",");

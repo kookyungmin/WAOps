@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kookyungmin.waops.domain.Criteria;
+import com.kookyungmin.waops.domain.FileNames;
 import com.kookyungmin.waops.domain.PageMaker;
 import com.kookyungmin.waops.domain.Question;
 import com.kookyungmin.waops.service.QuestionService;
@@ -93,5 +95,12 @@ public class QuestionController {
 		}catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getAttach/{qno}", method = RequestMethod.GET)
+	public List<String> read(@PathVariable("qno") Integer qno) throws Exception{
+		logger.info("getAttach... qno={}" , qno);
+		return service.getAttach(qno);
 	}
 }

@@ -27,6 +27,11 @@ public class QuestionDAOImpl implements QuestionDAO{
 	private static final String UPDATE = NS + ".update";
 	private static final String UPDATEREPLYCNT = NS + ".updateReplyCnt";
 	private static final String UPDATEVIEWCNT = NS + ".updateViewCnt";
+	private static final String APPENDATTACH = NS + ".appendAttach";
+	private static final String ADDATTACH = NS + ".addAttach";
+	private static final String GETATTACH = NS + ".getAttach";
+	private static final String DELETEALLATTACH = NS + ".deleteAllAttach";
+	private static final String DELETEATTACH = NS + ".deleteAttach";
 	
 	@Inject
 	SqlSession session;
@@ -79,6 +84,40 @@ public class QuestionDAOImpl implements QuestionDAO{
 	@Override
 	public void updateViewCnt(int qno) throws Exception {
 		session.update(UPDATEVIEWCNT, qno);
+		
+	}
+
+	@Override
+	public void appendAttach(String fileName, Integer qno) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("fileName", fileName);
+		map.put("qno", qno);
+		session.insert(APPENDATTACH, map);
+		
+	}
+
+	@Override
+	public void addAttach(String fileName) throws Exception {
+		logger.debug("QuestionDAOImpl.addAttach>>> {}", fileName);
+		session.insert(ADDATTACH, fileName);
+		
+	}
+
+	@Override
+	public List<String> getAttach(Integer qno) throws Exception {
+		logger.debug("QuestionDAOImpl.getAttach>>>{}", qno);
+		return session.selectList(GETATTACH, qno);
+	}
+
+	@Override
+	public void deleteAllAttach(int qno) throws Exception {
+		session.delete(DELETEALLATTACH, qno);
+		
+	}
+
+	@Override
+	public void deleteAttach(String fileName) throws Exception {
+		session.delete(DELETEATTACH, fileName);
 		
 	}
 

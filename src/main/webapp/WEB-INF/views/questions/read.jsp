@@ -99,4 +99,5 @@
 <script>
 	read(${qno}, ${cri.page}, ${cri.perPageNum});
 	replylistPage();
+	showAttaches(${qno});
 </script>

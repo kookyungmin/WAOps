@@ -6,6 +6,27 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="QuestionMapper">
+	<delete id="deleteAttach">
+		delete from attach
+		where filename = #{fileName}
+	</delete>
+	<delete id="deleteAllAttach">
+		delete from attach
+		where qno = #{qno}
+	</delete>
+	<select id="getAttach" resultType="String">
+		select filename
+		from attach
+		where qno = #{qno} 
+	</select>
+	<insert id="addAttach">
+		insert into attach ( filename, qno )
+		values( #{fileName}, last_insert_id())
+	</insert>
+	<insert id="appendAttach">
+		insert into attach (filename, qno)
+		values (#{fileName}, #{qno})
+	</insert>
 	<select id="listPage" resultType="Question">
 		select *
 		from question

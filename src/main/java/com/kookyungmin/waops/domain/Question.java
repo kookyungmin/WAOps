@@ -16,4 +16,6 @@ public class Question {
 	private int score;
 	private Date regdate;
 	private Date updatedate;
+	private String[] fileNames;
+	private String[] deleteFileNames;
 }

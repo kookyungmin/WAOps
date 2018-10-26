@@ -4,7 +4,8 @@ let gTitle = null,
     gContent = null,
     gQno = 0,
     gPage = 1,
-    gPerPageNum = 5;
+    gPerPageNum = 5,
+    gIsEditFile = false;
 
 const listPage = (page, perPageNum) => {
 	console.debug(page);
@@ -31,17 +32,26 @@ const update = (isEdit) => {
 	jsonData.title = $('#title').val();
 	jsonData.content = $('#content').val();
 	jsonData.score = $('#score').val();
+	
+	let fileNames = [];
+	gUpFiles.forEach(file => {
+		fileNames.push(file.fullName);
+	});
+	console.log("fileNames>>>>" ,fileNames);
+	if(fileNames.length > 0){
+		jsonData.fileNames = fileNames;
+	}
+	
 	if(!isEdit){
 		method = 'POST';
 		jsonData.writer = $('#writer').val();
-		let fileNames = [];
-		gUpFiles.forEach(file => {
-			fileNames.push(file.fullName);
-		});
-		console.log("fileNames>>>>" ,fileNames);
-		jsonData.files = fileNames;
 		url = URL;
 	}else{
+		deleteFileNames = [];
+		gDeleteFiles.forEach((df) => {
+			deleteFileNames.push(df.fullName);
+		});
+		jsonData.deleteFileNames = deleteFileNames;
 		method = 'PUT';
 		url = URL + "/" + gQno;
 	}
@@ -53,8 +63,12 @@ const update = (isEdit) => {
 				alert("등록이 완료되었습니다.");
 				postToUrl('/questions/all', { page : 1, perPageNum : 5});
 			}else {
-				alert("수정이 완료되었습니다.");
-				document.location.href = "/questions/read?qno=" + gQno + "&page=" + gPage + "&perPageNum=" + gPerPageNum;
+				deleteFiles((isSucess, res) => {
+					if(isSuccess){
+						document.location.href = "/questions/read?qno=" + gQno + "&page=" + gPage + "&perPageNum=" + gPerPageNum;
+						alert("수정이 완료되었습니다.");
+					}
+				}, gDeleteFiles);				
 			}
 		}
 	}, method, jsonData);
@@ -85,7 +99,13 @@ const remove = (qno) => {
 	sendAjax(url, (isSuccess, res) => {
 		if(isSuccess){
 			alert("글이 삭제되었습니다.");
-			postToUrl('/questions/all',{'page' : gPage, 'perPageNum' : gPerPageNum});
+			deleteFiles((isSuccess, res) => {
+				if(isSuccess){
+					postToUrl('/questions/all',{'page' : gPage, 'perPageNum' : gPerPageNum});
+				
+				}
+			}, gLoadedFiles);
+			
 		}
 	}, 'DELETE');
 }
@@ -97,7 +117,14 @@ const cancle = (isEdit) => {
 				postToUrl('/questions/all',{'page' : gPage, 'perPageNum' : gPerPageNum});
 			}
 		};
-		deleteFiles(registCancle);
+		deleteFiles(registCancle, gUpFiles);
+	}else{
+		const updateCancle = (isSuccess, res) => {
+			if(isSuccess){
+				window.location.href = '/questions/read?qno=' + gQno + '&page=' + gPage + '&perPageNum=' + gPerPageNum;
+			}
+		};
+		deleteFiles(updateCancle, gUpFiles);
 	}
 }
 
@@ -117,7 +144,7 @@ const checkEdit = (isEdit, selectChanged) => {
 	
 	if(!writer || !title || !content){
 		$btnModQuestion.addClass('disabled');
-	}else if(isEdit && title === gTitle && content === gContent && !selectChanged){
+	}else if(isEdit && title === gTitle && content === gContent && !selectChanged && !gIsEditFile){
 		$btnModQuestion.addClass('disabled');
 	}else {
 		$btnModQuestion.removeClass('disabled');

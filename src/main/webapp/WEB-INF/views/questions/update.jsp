@@ -30,26 +30,31 @@
   				<option value="100">100</option>
 			</select>
 		</div>
- 		<div class="fileUpload mg-bottom10">
-			<label for="">파일 첨부</label>
-			<div class="fileDrop form-control">
-				파일을 올려놓으세요!
-			</div>
-			<span id="status" class="center mg-bottom10"></span>
-		</div>
-		<%@include file="uploadedFiles.jsp" %>
-		<div class="mg-bottom30">
-  			<button id="btnModQuestion" class="btn btn-warning" onclick="update(true)">수정</button>
-  			<a href="/questions/read?qno={{qno}}&page={{page}}&perPageNum={{perPageNum}}">
-				<button class="btn btn-danger">취소</button>
-			</a>
-  		</div>
 	</script>
+	<div class="fileUpload mg-bottom10">
+		<label for="">파일 첨부</label>
+		<div class="fileDrop form-control">
+			파일을 올려놓으세요!
+		</div>
+		<span id="status" class="center mg-bottom10"></span>
+	</div>
+	<%@include file="uploadedFiles.jsp" %>
+	<form id="form_attach" action="/uploadAjax"  method="post" enctype="multipart/form-data">
+		<input  id="isDirect" value="true" name="isDirect" class="hidden" />
+		<input id="ajax-file" type="file" name="files"  class="hidden"/>		
+	</form>
+	<div class="mg-bottom30">
+  		<button id="btnModQuestion" class="btn btn-warning" onclick="update(true)">수정</button>
+  		<a href="javascript:;" onclick=cancle(true)>
+			<button class="btn btn-danger">취소</button>
+		</a>
+  	</div>
+	
 </div>	
 <%@ include file="../include/footer.jsp" %>
 
 
 <script>
 	read(${qno}, ${cri.page}, ${cri.perPageNum});
-	gIsDirect = true;
+	showAttaches(${qno});
 </script>

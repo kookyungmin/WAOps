@@ -3,6 +3,7 @@ package com.kookyungmin.waops.service;
 import java.util.List;
 
 import com.kookyungmin.waops.domain.Criteria;
+import com.kookyungmin.waops.domain.FileNames;
 import com.kookyungmin.waops.domain.Question;
 
 public interface QuestionService {
@@ -12,4 +13,5 @@ public interface QuestionService {
 	int delete(int qno) throws Exception;
 	int update(Question question) throws Exception;
 	int getTotalCount() throws Exception;
+	List<String> getAttach(Integer qno) throws Exception;
 }
