@@ -1,11 +1,11 @@
 let gReplyPage = 1,
 	gRno = 0,
 	gReplyText = null,
-	replyURL = "/replies";
+	replyURL = "/replies/";
 
 const replylistPage = (page) => {
 	gReplyPage = page || gReplyPage;
-	url = replyURL + "/qno/" + gQno + "/all/" + gReplyPage;
+	url = replyURL + "qno/" + gQno + "/all/" + gReplyPage;
 	console.debug(url);
 	sendAjax(url, (isSuccess, res) => {
 		console.debug(res);
@@ -31,7 +31,7 @@ const updateReply = (isEdit, $replyText, $replyer) => {
 		url = replyURL;
 	}else{
 		method = 'PUT';
-		url = replyURL + "/" + gRno;
+		url = replyURL + gRno;
 	}
 	
 	sendAjax(url, (isSuccess, res) => {
@@ -52,7 +52,7 @@ const updateReply = (isEdit, $replyText, $replyer) => {
 }
 
 const deleteReply = () => {
-	url = replyURL + "/" + gRno;
+	url = replyURL + gRno;
 	sendAjax(url, (isSuccess, res) => {
 		if(isSuccess){
 			if(!confirm("정말로 삭제하시겠습니까??")) return;
