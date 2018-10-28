@@ -22,7 +22,7 @@ import com.kookyungmin.waops.domain.Reply;
 import com.kookyungmin.waops.service.ReplyService;
 
 @RestController
-@RequestMapping("/replies")
+@RequestMapping("/replies/")
 public class ReplyController {
 private static Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	

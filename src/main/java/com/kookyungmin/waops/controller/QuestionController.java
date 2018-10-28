@@ -24,7 +24,7 @@ import com.kookyungmin.waops.domain.Question;
 import com.kookyungmin.waops.service.QuestionService;
 
 @RestController
-@RequestMapping("/questions")
+@RequestMapping("/questions/")
 public class QuestionController {
 	private static Logger logger = LoggerFactory.getLogger(QuestionController.class);
 	

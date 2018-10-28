@@ -1,4 +1,4 @@
-const URL = "/questions";
+const URL = "/questions/";
 
 let gTitle = null,
     gContent = null,
@@ -11,7 +11,7 @@ const listPage = (page, perPageNum) => {
 	console.debug(page);
 	gPage = page || gPage;
 	gPerPageNum = perPageNum || gPerPageNum;
-	url = URL + "/all/" + gPage + "/" + gPerPageNum;
+	url = URL + "all/" + gPage + "/" + gPerPageNum;
 	
 	sendAjax(url, (isSuccess, res) => {
 		console.debug(res);
@@ -53,7 +53,7 @@ const update = (isEdit) => {
 		});
 		jsonData.deleteFileNames = deleteFileNames;
 		method = 'PUT';
-		url = URL + "/" + gQno;
+		url = URL + gQno;
 	}
 	
 	sendAjax(url, (isSuccess, res) => {
@@ -78,7 +78,7 @@ const read = (qno, page, perPageNum) => {
 	gPage = page || gPage;
 	gPerPageNum = perPageNum || gPerPageNum;
 	gQno = qno || gQno;
-	url = URL + "/" + qno;
+	url = URL + qno;
 	sendAjax(url, (isSuccess, res) => {
 		if(isSuccess){
 			console.debug(res);
@@ -95,7 +95,7 @@ const read = (qno, page, perPageNum) => {
 const remove = (qno) => {
 	if(!confirm("정말로 삭제하시겠습니까??")) return;
 	console.debug(qno);
-	url = URL + "/" + qno;
+	url = URL + qno;
 	sendAjax(url, (isSuccess, res) => {
 		if(isSuccess){
 			alert("글이 삭제되었습니다.");
