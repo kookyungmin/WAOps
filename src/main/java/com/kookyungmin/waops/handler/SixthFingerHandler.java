@@ -58,7 +58,6 @@ public class SixthFingerHandler extends TextWebSocketHandler{
 						WebSocketSession receiveSession = sessions.get("android" + id);
 						if(receiveSession != null) {
 							logger.debug("msg" + mg);
-							
 							receiveSession.sendMessage(new TextMessage(mg));
 						}
 					}

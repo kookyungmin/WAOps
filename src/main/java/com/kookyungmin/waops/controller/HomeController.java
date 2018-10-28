@@ -19,7 +19,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.debug("home>>>>>>");
 		model.addAttribute("myCondition", "home");
@@ -51,7 +51,14 @@ public class HomeController {
 		model.addAttribute("qno", qno);
 		return "/questions/read";
 	}
-	
+	@RequestMapping(value = "/questions/all", method = RequestMethod.GET)
+	public String questionListPage(Model model) {
+		logger.debug("questionsListPage>>>>>>");
+		Criteria cri = new Criteria();
+		model.addAttribute("cri", cri);
+		model.addAttribute("myCondition", "question");
+		return "/questions/listPage";
+	}
 	@RequestMapping(value = "/questions/all", method = RequestMethod.POST)
 	public String questionListPage(Model model, @ModelAttribute("cri") Criteria cri) {
 		logger.debug("questionsListPage>>>>>>");
