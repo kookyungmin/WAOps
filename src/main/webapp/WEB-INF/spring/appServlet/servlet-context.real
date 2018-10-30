@@ -90,7 +90,7 @@
 	</beans:bean>
 	<beans:bean id="naverRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg
-			value="http://localhost:8080/auth/naver/callback" />
+			value="http://www.waops.cf/auth/naver/callback" />
 	</beans:bean>
 
 	<beans:bean id="naverSns" class="com.kookyungmin.waops.auth.SnsValue">
@@ -111,7 +111,7 @@
 	</beans:bean>
 	<beans:bean id="googleRedirectUrl" class="java.lang.String">
 		<beans:constructor-arg
-			value="http://localhost:8080/auth/google/callback" />
+			value="http://www.waops.cf/auth/google/callback" />
 	</beans:bean>
 	<beans:bean id="googleSns" class="com.kookyungmin.waops.auth.SnsValue">
 		<beans:constructor-arg value="google" />
