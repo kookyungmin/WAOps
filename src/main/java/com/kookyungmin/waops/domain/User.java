@@ -15,4 +15,5 @@ public class User {
 	private String nickname;
 	private String loginip;
 	private Date lastlogin;
+	private String profile;
 }

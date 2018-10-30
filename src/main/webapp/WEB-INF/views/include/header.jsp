@@ -40,7 +40,7 @@
 			<h1 class="f-l"><a href="#"><span>W</span>e <span>A</span>re devel<span>Op</span>er<span>s</span></a></h1>
 			<div class="header-img f-r mg-right30 mg-top10">
 				<a href="#">
-					<img src="/resources/img/user.jpg" alt="">
+					<img id="userprofile" src="/resources/img/user.jpg" alt="">
 				</a>
 			</div>
 		</div>
@@ -65,5 +65,11 @@
 			$('#userNickName').removeClass('hidden');
 			$('#logoutBtn').removeClass('hidden');
 			$('#loginBtn').addClass('hidden');
+			let userProfile = '${loginUser.profile}';
+			if(userProfile){
+				const uphost = window.location.protocol + "//" + window.location.hostname;
+				$('#userprofile').attr({'src': uphost + '/uploads' + userProfile});
+			}
+			
 		}
 	</script>
