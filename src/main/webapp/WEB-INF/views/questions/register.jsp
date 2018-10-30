@@ -9,7 +9,7 @@
 	<div class="mg-top30">
 		<div class="mg-bottom10">
 			<label for="writer">작성자</label>
-    		<input type="text" class="form-control" id="writer" placeholder="작성자를 입력하시오." oninput="checkEdit(false)">
+    		<input type="text" class="form-control" id="writer" readonly="readonly" value="${loginUser.uid}">
     	</div>
     	<div class="mg-bottom10">
     		<label for="title">제목</label>
@@ -37,7 +37,7 @@
 			<span id="status" class="center mg-bottom10"></span>
 		</div>
 		
-		<%@include file="uploadedFiles.jsp" %>
+		<%@include file="../uploadedFiles.jsp" %>
 		
 		<form id="form_attach" action="/uploadAjax"  method="post" enctype="multipart/form-data">
 			<input  id="isDirect" value="true" name="isDirect" class="hidden" />

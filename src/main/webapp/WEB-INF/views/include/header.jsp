@@ -24,8 +24,16 @@
 	<!-- header -->
 	<header>
 		<div class="header-btn f-r mg-bottom10">
+				<a href="" class="mg-right10">
+					<span id="userNickName" class="hidden">${loginUser.nickname} 님</span>
+				</a>
 			<button type="button" class="btn btn-warning mg-right10 mg-top10">사이트 소개</button>
-			<button type="button" class="btn btn-default mg-right10 mg-top10">로그인</button>
+            	<a href="/login">
+					<button id="loginBtn" type="button" class="hidden btn btn-default mg-right10 mg-top10">로그인</button>
+				</a>      	
+                <a href="/logout">
+					<button id="logoutBtn" type="button" class="hidden btn btn-danger mg-right10 mg-top10">로그아웃</button>
+				</a>
 			<button type="button" class="btn btn-default mg-right10 mg-top10">회원가입</button>
 		</div>
 		<div class="header-main mg-top10 bd-orange c-b o-h">
@@ -47,3 +55,15 @@
 			</button>
 		</div>
 	</header>
+	<script>
+		let loginUser = '${loginUser}';
+		if(!loginUser){
+			$('#userNickName').addClass('hidden');
+			$('#logoutBtn').addClass('hidden');
+			$('#loginBtn').removeClass('hidden');
+		}else{
+			$('#userNickName').removeClass('hidden');
+			$('#logoutBtn').removeClass('hidden');
+			$('#loginBtn').addClass('hidden');
+		}
+	</script>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kookyungmin.waops.domain.Criteria;
 
@@ -22,11 +23,11 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.debug("home>>>>>>");
-		model.addAttribute("myCondition", "home");
-		return "home";
+		return "redirect:/questions/all";
 	}
+
 	@RequestMapping(value = "/questions/register", method = RequestMethod.GET)
-	public String registerQuestion(Model model) {
+	public String registerQuestion(Model model, RedirectAttributes rttr) {
 		logger.debug("registerQuestion>>>>>>>>");
 		model.addAttribute("myCondition", "question");
 		return "/questions/register";
@@ -35,7 +36,8 @@ public class HomeController {
 	@RequestMapping(value = "/questions/update", method = RequestMethod.GET)
 	public String updateQuestion(@RequestParam("qno") int qno, 
 								 @ModelAttribute("cri") Criteria cri,
-								 Model model) {
+								 Model model,
+								 RedirectAttributes rttr) {
 		logger.debug("registerQuestion>>>>>>>>qno={}", qno);
 		model.addAttribute("myCondition", "question");
 		model.addAttribute("qno", qno);
@@ -45,14 +47,15 @@ public class HomeController {
 	@RequestMapping(value = "/questions/read", method = RequestMethod.GET)
 	public String readQuestion(@RequestParam("qno") int qno,
 			@ModelAttribute("cri") Criteria cri,
-			Model model) {
+			Model model,
+			RedirectAttributes rttr) {
 		logger.debug("readQuestions>>>>>>qno={}", qno);
 		model.addAttribute("myCondition", "question");
 		model.addAttribute("qno", qno);
 		return "/questions/read";
 	}
 	@RequestMapping(value = "/questions/all", method = RequestMethod.GET)
-	public String questionListPage(Model model) {
+	public String questionListPage(Model model, RedirectAttributes rttr) {
 		logger.debug("questionsListPage>>>>>>");
 		Criteria cri = new Criteria();
 		model.addAttribute("cri", cri);

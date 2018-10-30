@@ -38,7 +38,7 @@
 		</div>
 		<span id="status" class="center mg-bottom10"></span>
 	</div>
-	<%@include file="uploadedFiles.jsp" %>
+	<%@include file="../uploadedFiles.jsp" %>
 	<form id="form_attach" action="/uploadAjax"  method="post" enctype="multipart/form-data">
 		<input  id="isDirect" value="true" name="isDirect" class="hidden" />
 		<input id="ajax-file" type="file" name="files"  class="hidden"/>		

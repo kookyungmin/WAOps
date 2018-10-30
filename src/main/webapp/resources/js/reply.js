@@ -39,7 +39,6 @@ const updateReply = (isEdit, $replyText, $replyer) => {
 		if(isSuccess){
 			if(!isEdit){
 				alert("댓글 등록이 완료되었습니다.");
-				$replyer.val("");
 				$replyText.val("");
 				replylistPage(res.lastPage);
 				window.scrollTo(0, document.body.scrollHeight);
@@ -64,6 +63,12 @@ const deleteReply = () => {
 
 
 const clickModBtnReply = (rno) => {
+	replyer = $('#replyWriter' + rno).text();
+	if(replyer != loginUserID){
+		console.debug(replyer)
+		alert("본인 댓글만 수정가능합니다!");
+		return;
+	}
 	gRno = rno || gRno;
 	gReplyText = $('#replyText' + rno).val() || gReplyText;
 	$('.btnModReply').addClass('hidden')
@@ -89,17 +94,15 @@ const checkEditReply = (isEdit) => {
 		replyText,
 		$btnModReply;
 	if(isEdit){
-		replyer = true;
 		replyText = $('#replyText' + gRno).val();
 		$btnModReply = $('#btnUpdateReply' + gRno);
 	}else{
-		replyer = $('#insertReplyer').val();
 		replyText = $('#insertReplyText').val();
 		$btnModReply = $('#btnRegisterReply');
 	}
 	
 	
-	if(!replyer || !replyText){
+	if(!replyText){
 		$btnModReply.addClass('disabled');
 	}else if(isEdit && replyText === gReplyText){
 		$btnModReply.addClass('disabled');

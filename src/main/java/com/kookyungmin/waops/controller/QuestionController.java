@@ -96,7 +96,6 @@ public class QuestionController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/getAttach/{qno}", method = RequestMethod.GET)
 	public List<String> read(@PathVariable("qno") Integer qno) throws Exception{

@@ -22,13 +22,14 @@
 	<script>
 		//사이드 바 고정
 		$('#sidebar').stick_in_parent();
-		$myCondition = $('.' + `${myCondition}`);
+		let myCondition = `${myCondition}` || 'home';
+		$myCondition = $('.' + myCondition);
 		$myConditionParent = $myCondition.parent();
 		if($myConditionParent.attr('class') === 'level2'){
 			$myConditionParent.parent().children('a').addClass('level1-active');
 			$myConditionParent.stop().show();
 			$myCondition.children('a').addClass('level2-active');
 		}else{
-			$('.' + `${myCondition}` +'>a').addClass('level1-active');
+			$('.' + myCondition +'>a').addClass('level1-active');
 		}
 	</script>

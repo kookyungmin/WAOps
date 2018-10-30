@@ -7,16 +7,16 @@
 	<script id="readQuestion" type="text/x-handlebars-template" class="mg-top30">
 		<div class="mg-bottom10">
 			<h2>{{title}}</h2>
-			<span class="mg-right30">작성자: {{writer}} </span>
+			<span>작성자: </span><span id="writer" class="mg-right10">{{writer}}</span>
 			<span class="mg-right30">채택점수: {{score}}</span>
     	</div>
     	<div class="mg-bottom10 o-h">
     		<h4 class="f-l">내용:</h4>
     		<div class="f-r">
   				<a href="/questions/update?qno={{qno}}&page={{page}}&perPageNum={{perPageNum}}">
-					<button class="btn btn-warning btn-sm">수정</button>
+					<button id="updateQuestionBtn" class="btn btn-warning btn-sm hidden">수정</button>
 				</a>
-  				<button class="btn btn-danger btn-sm" onclick=remove({{qno}})>삭제</button>
+  				<button id="deleteQuestionBtn" class="btn btn-danger btn-sm hidden" onclick=remove({{qno}})>삭제</button>
   				<a href="javascript:postToUrl('/questions/all',{ 'page' : {{page}}, 'perPageNum' : {{perPageNum}} });">
 					<button class="btn btn-primary btn-sm">목록</button>
 				</a>
@@ -33,12 +33,12 @@
  		<hr />	
  	</div>
  	
- 	<%@include file="uploadedFiles.jsp" %>
+ 	<%@include file="../uploadedFiles.jsp" %>
  	
  	<div id="insertReply" class="mg-bottom30">
  		<h4>답변 등록</h4>
  		<input id="insertReplyer" class= "form-control w-15 mg-bottom10" 
- 			oninput="checkEditReply(false)" placeholder= "작성자 입력"/>
+ 			oninput="checkEditReply(false)" readonly="readonly" value="${loginUser.uid}"/>
  		
  		<textarea id="insertReplyText" rows="4" class="form-control mg-bottom10" 
  			oninput="checkEditReply(false)" placeholder="답글 입력"></textarea>
@@ -51,7 +51,7 @@
  		{{#each list}}
 			<div id="reply" class="mg-bottom30 o-h">
 
- 				<span id="replyWriter{{rno}}">작성자: {{replyer}}</span>
+ 				<span>작성자: </span><span id="replyWriter{{rno}}">{{replyer}}</span>
 
 				<span class="f-r">작성일: {{fullTime updatedate}}</span>
 
@@ -100,4 +100,5 @@
 	read(${qno}, ${cri.page}, ${cri.perPageNum});
 	replylistPage();
 	showAttaches(${qno});
+	let loginUserID = '${loginUser.uid}';
 </script>

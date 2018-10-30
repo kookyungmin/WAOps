@@ -88,6 +88,11 @@ const read = (qno, page, perPageNum) => {
 			res.perPageNum = gPerPageNum;
 			renderHbs('readQuestion', res);
 			$('#btnModQuestion').addClass('disabled');
+			writer = $('#writer').text();
+			if(loginUserID == writer) {
+				$('#updateQuestionBtn').removeClass('hidden');
+				$('#deleteQuestionBtn').removeClass('hidden');
+			}
 		}
 	}, 'GET');
 };
@@ -137,12 +142,11 @@ const checkEdit = (isEdit, selectChanged) => {
 	
 	selectChanged = selectChanged || false;
 	
-	let writer = $('#writer').val(),
-	    title = $('#title').val(),
+	let title = $('#title').val(),
 	    content = $('#content').val();
 	let $btnModQuestion = $('#btnModQuestion');
 	
-	if(!writer || !title || !content){
+	if(!title || !content){
 		$btnModQuestion.addClass('disabled');
 	}else if(isEdit && title === gTitle && content === gContent && !selectChanged && !gIsEditFile){
 		$btnModQuestion.addClass('disabled');
