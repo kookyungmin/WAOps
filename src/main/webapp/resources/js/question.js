@@ -74,7 +74,7 @@ const update = (isEdit) => {
 	}, method, jsonData);
 };
 
-const read = (qno, page, perPageNum) => {
+const read = (qno, page, perPageNum, loginUserID) => {
 	gPage = page || gPage;
 	gPerPageNum = perPageNum || gPerPageNum;
 	gQno = qno || gQno;

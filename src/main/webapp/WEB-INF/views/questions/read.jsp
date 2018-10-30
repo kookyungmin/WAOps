@@ -97,8 +97,7 @@
 
 <script src="/resources/js/reply.js"></script>
 <script>
-	read(${qno}, ${cri.page}, ${cri.perPageNum});
+	read(${qno}, ${cri.page}, ${cri.perPageNum}, '${loginUser.uid}');
 	replylistPage();
 	showAttaches(${qno});
-	let loginUserID = '${loginUser.uid}';
 </script>
