@@ -14,7 +14,7 @@
 
 <script>
 	const uphost = window.location.protocol + "//" + window.location.hostname;
-	$('#resultVideo').attr({'src': uphost + '/uploads/result.mp4'});
-	$('#sixfingerVideo').attr({'src': uphost + '/uploads/sixfinger.mp4'});
+	$('#resultVideo').attr({'src': '/resources/img/result.mp4'});
+	$('#sixfingerVideo').attr({'src': '/resources/img/sixfinger.mp4'});
 	$('#me').attr({'src': uphost + '/uploads/me.png'})
 </script>
