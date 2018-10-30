@@ -37,10 +37,10 @@ public class SixthFingerHandler extends TextWebSocketHandler{
 				String id = strs[2];
 				String mg = strs[3];
 				if(cmd.equals("connected")) {
-					logger.debug("senderid={}, session={}", sender + id, session);
+					logger.info("connected>>> senderid={}, message={}", sender + id, mg);
 					sessions.put(sender + id , session);
 				}else if(cmd.equals("switch")) {
-					logger.debug("switch>>>>>>status={}", mg);
+					logger.info("switch>>>>>>status={}", mg);
 					//아두이노에게 스위치 신호 보냄
 					WebSocketSession receiveSession = sessions.get("arduino" + id);
 					if(receiveSession != null) {
@@ -48,16 +48,17 @@ public class SixthFingerHandler extends TextWebSocketHandler{
 					}
 				}else if(cmd.equals("temperature")) {
 					if(sender.equals("android")) {
-						logger.debug("android temperature id={}", id);
+						logger.info("android request temperature to {}", "arduino" + id);
 						WebSocketSession receiveSession = sessions.get("arduino" + id);
 						if(receiveSession != null) {
 							receiveSession.sendMessage(new TextMessage(mg));
 						}
 					}else {
-						logger.debug("arduino temperature id={}", id);
+						logger.info("arduino response temperature to {}","android" + id);
 						WebSocketSession receiveSession = sessions.get("android" + id);
 						if(receiveSession != null) {
-							logger.debug("msg" + mg);
+							String[] temp = mg.split("/");
+							logger.info("temperature={}, humidity={}", temp[0], temp[1]);
 							receiveSession.sendMessage(new TextMessage(mg));
 						}
 					}
