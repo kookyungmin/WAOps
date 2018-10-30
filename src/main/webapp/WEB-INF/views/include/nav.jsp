@@ -5,7 +5,7 @@
     <div id="sidebar" class="w-15 mg-top10 bd-orange f-l mg-bottom10 mg-right30">
 		<section class="nav">
 			<li class="level1 home"><a href="#">내 정보</a></li>
-			<li class="level1"><a href="#">타임 라인</a></li>
+			<li class="level1 timeline"><a href="/timelines">타임 라인</a></li>
 			<li class="level1 community"><a href="#" class="a-default">커뮤니티</a>
 				<ul class="level2">
 					<li><a href="#">학원/회사 평가</a></li>

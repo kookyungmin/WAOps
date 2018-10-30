@@ -25,7 +25,14 @@ public class HomeController {
 		logger.debug("home>>>>>>");
 		return "redirect:/questions/all";
 	}
-
+	
+	@RequestMapping(value = "/timelines", method = RequestMethod.GET)
+	public String timeline(Model model, RedirectAttributes rttr) {
+		logger.debug("timeline>>>>>>>>");
+		model.addAttribute("myCondition", "timeline");
+		return "timeline";
+	}
+	
 	@RequestMapping(value = "/questions/register", method = RequestMethod.GET)
 	public String registerQuestion(Model model, RedirectAttributes rttr) {
 		logger.debug("registerQuestion>>>>>>>>");
