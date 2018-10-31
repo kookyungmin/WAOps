@@ -151,7 +151,28 @@ li {
 	padding : 10px;
 }
 
-
+.timelinecontent{
+	width: 500px;
+	border : 1px solid #eee;
+	padding : 10px;
+	margin-bottom : 10px;
+	margin-top : 30px;
+}
+.timelinecontent.video{
+	width : 300px;
+	overflow : hidden;
+}
+video{
+	width : 100% !important;
+	max-height: 600px !important;
+}
+.timelineprofile img{
+	width : 100%;
+}
+.timelineprofile {
+	width: 30px;
+	height: 30px;
+}
 /* --------------- table -------------------------- */
 
 table>thead {
