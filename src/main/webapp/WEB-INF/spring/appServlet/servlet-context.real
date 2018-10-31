@@ -72,12 +72,12 @@
 	<interceptors>
 	   <interceptor>
 	       <mapping path="/displayFile"></mapping>
+	       <mapping path="/timelines"></mapping>
 	       <mapping path="/deleteFile"></mapping>
 	   	   <mapping path="/getAttach"></mapping>
 	   	   <mapping path="/uploadAjax"></mapping>
 	       <mapping path="/questions/*"></mapping>
 	       <mapping path="/replies/*"></mapping>
-	       <mapping path="/timelines"></mapping>
 	       <beans:ref bean="AuthInterceptor" />
 	   </interceptor>
 	</interceptors>
